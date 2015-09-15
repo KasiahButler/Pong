@@ -46,7 +46,7 @@ int main()
 		starterBall.xPos -= ballVelocity.xPos * sfw::getDeltaTime();
 		starterBall.yPos -= ballVelocity.yPos * sfw::getDeltaTime();
 
-		//Calls on functions for Collision detection of the Ball with the Borders and Paddles
+		//Prevents Paddles from going off screen by forcing their position to the borders
 		if (playerPaddleOne.yPos + playerPaddleOne.yWidth >= 595)
 		{
 			playerPaddleOne.yPos = 595 - playerPaddleOne.yWidth;
@@ -63,9 +63,14 @@ int main()
 		{
 			playerPaddleTwo.yPos = 5;
 		}
+		//Calls on functions for Ball Collision with Paddles and Top/Bottom Walls
 		if (paddleCollisionLeft(starterBall.xPos, starterBall.yPos, starterBall.radius, playerPaddleOne.xPos, playerPaddleOne.yPos, playerPaddleOne.yWidth) == true)
 		{
 			ballVelocity.xPos = -ballVelocity.xPos;
+			if (sfw::getKey('s'))
+			{
+				ballVelocity.yPos = -ballVelocity.yPos;
+			}
 		}
 		if (paddleCollisionRight(starterBall.xPos, starterBall.yPos, starterBall.radius, playerPaddleTwo.xPos, playerPaddleTwo.yPos, playerPaddleTwo.yWidth) == true)
 		{
