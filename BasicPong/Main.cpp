@@ -14,11 +14,16 @@ int main()
 	Player playerPaddleOne{30, 300, 100, 0};
 	Player playerPaddleTwo{ 770, 300, 100, 0 };
 	Ball starterBall{ SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 10 };
-	Velocity ballVelocity{ 300, 100 };
+	Velocity ballVelocity{};
 
 	//Initialize Game State Loop
 	while (sfw::stepContext())
 	{
+		if (sfw::getKey(' '))
+		{
+			ballVelocity.xPos = 250;
+			ballVelocity.yPos = rand() % 50;
+		}
 		//Draw the Borders using the screen width/height const, these will be used for collision detection
 		//Bottom Border
 		sfw::drawLine(SCREEN_WIDTH - 795, SCREEN_HEIGHT - 5, SCREEN_WIDTH - 5, SCREEN_HEIGHT - 5);
@@ -67,19 +72,23 @@ int main()
 		//Calls on functions for Ball Collision with Paddles and Top/Bottom Walls
 		if (paddleCollisionLeft(starterBall.xPos, starterBall.yPos, starterBall.radius, playerPaddleOne.xPos, playerPaddleOne.yPos, playerPaddleOne.yWidth) == true)
 		{
+			starterBall.xPos += 5;
 			ballVelocity.xPos = -ballVelocity.xPos;
 		}
 		if (paddleCollisionRight(starterBall.xPos, starterBall.yPos, starterBall.radius, playerPaddleTwo.xPos, playerPaddleTwo.yPos, playerPaddleTwo.yWidth) == true)
 		{
+			starterBall.xPos -= 5;
 			ballVelocity.xPos = -ballVelocity.xPos;
 		}
 		if (wallCollisionTop(5, 5, 795, starterBall.xPos, starterBall.yPos, starterBall.radius) == true)
 		{
+			starterBall.yPos += 5;
 			ballVelocity.yPos = -ballVelocity.yPos;
 		}
 
 		if (wallCollisionBot(5, 595, 795, starterBall.xPos, starterBall.yPos, starterBall.radius) == true)
 		{
+			starterBall.yPos -= 5;
 			ballVelocity.yPos = -ballVelocity.yPos;
 		}
 
