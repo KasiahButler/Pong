@@ -8,7 +8,7 @@
 int main()
 {
 	//Create the window (set to the const width/height of 800x600) and give the window a name
-	sfw::initContext(SCREEN_WIDTH, SCREEN_HEIGHT, "TESTING!");
+	sfw::initContext(SCREEN_WIDTH, SCREEN_HEIGHT, "Corgii Pong");
 
 	//Create the variables for Game Borders, Player and AI Paddle, as well as the Ball
 	Player playerPaddleOne{30, 300, 100, 0};
@@ -92,6 +92,7 @@ int main()
 			std::cout << "Player Two Score: " << playerPaddleTwo.pScore << std::endl;
 			if (playerPaddleOne.pScore == 3)
 			{
+				std::cout << "Player One WINS!" << std::endl;
 				break;
 			}
 		}
@@ -103,10 +104,13 @@ int main()
 			std::cout << "Player Two Score: " << playerPaddleTwo.pScore << std::endl;
 			if (playerPaddleTwo.pScore == 3)
 			{
+				std::cout << "Player Two WINS!" << std::endl;
 				break;
 			}
 		}
 	}
+	/*std::cout << "Would you like to play again? Y / N?" << std::endl;
+	std::cin >> letHolder[] >> std::endl;*/
 	//Shuts down OpenGL window
 	sfw::termContext;
 }
