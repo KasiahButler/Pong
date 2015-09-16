@@ -11,10 +11,10 @@ int main()
 	sfw::initContext(SCREEN_WIDTH, SCREEN_HEIGHT, "TESTING!");
 
 	//Create the variables for Game Borders, Player and AI Paddle, as well as the Ball
-	Player playerPaddleOne{30, 300, 100};
-	Player playerPaddleTwo{ 770, 300, 100 };
+	Player playerPaddleOne{30, 300, 100, 0};
+	Player playerPaddleTwo{ 770, 300, 100, 0 };
 	Ball starterBall{ SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 10 };
-	Velocity ballVelocity{ 100, 40 };
+	Velocity ballVelocity{ 200, 50 };
 
 	//Initialize Game State Loop
 	while (sfw::stepContext())
@@ -63,6 +63,7 @@ int main()
 		{
 			playerPaddleTwo.yPos = 5;
 		}
+
 		//Calls on functions for Ball Collision with Paddles and Top/Bottom Walls
 		if (paddleCollisionLeft(starterBall.xPos, starterBall.yPos, starterBall.radius, playerPaddleOne.xPos, playerPaddleOne.yPos, playerPaddleOne.yWidth) == true)
 		{
@@ -84,6 +85,22 @@ int main()
 		if (wallCollisionBot(5, 595, 795, starterBall.xPos, starterBall.yPos, starterBall.radius) == true)
 		{
 			ballVelocity.yPos = -ballVelocity.yPos;
+		}
+
+		//Checks to see if the ball scores and increases the players score by 1
+		if (starterBall.xPos <= 5)
+		{
+			++playerPaddleOne.pScore;
+			starterBall.xPos = SCREEN_WIDTH / 2;
+			std::cout << playerPaddleOne.pScore << std::endl;
+			std::cout << playerPaddleTwo.pScore << std::endl;
+		}
+		if (starterBall.xPos >= 795)
+		{
+			++playerPaddleTwo.pScore;
+			starterBall.xPos = SCREEN_WIDTH / 2;
+			std::cout << playerPaddleOne.pScore << std::endl;
+			std::cout << playerPaddleTwo.pScore << std::endl;
 		}
 	}
 	//Shuts down OpenGL window

@@ -20,6 +20,7 @@ struct Player
 	float xPos;
 	float yPos;
 	float yWidth;
+	int pScore;
 };
 
 struct Velocity

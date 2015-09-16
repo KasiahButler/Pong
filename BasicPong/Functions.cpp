@@ -29,6 +29,8 @@ bool paddleCollisionRight(float xBall, float yBall, float rBall, float xPaddle, 
 
 }
 
+
+//Collision function for Top and Bottom Walls
 bool wallCollisionTop(float x1Wall, float yWall, float x2Wall, float xBall, float yBall, float rBall)
 {
 	if (xBall >= x1Wall && xBall <= x2Wall)
