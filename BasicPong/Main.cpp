@@ -14,7 +14,7 @@ int main()
 	Player playerPaddleOne{30, 300, 100, 0};
 	Player playerPaddleTwo{ 770, 300, 100, 0 };
 	Ball starterBall{ SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 10 };
-	Velocity ballVelocity{ 200, 50 };
+	Velocity ballVelocity{ 300, 100 };
 
 	//Initialize Game State Loop
 	while (sfw::stepContext())
@@ -68,10 +68,6 @@ int main()
 		if (paddleCollisionLeft(starterBall.xPos, starterBall.yPos, starterBall.radius, playerPaddleOne.xPos, playerPaddleOne.yPos, playerPaddleOne.yWidth) == true)
 		{
 			ballVelocity.xPos = -ballVelocity.xPos;
-			if (sfw::getKey('s'))
-			{
-				ballVelocity.yPos = -ballVelocity.yPos;
-			}
 		}
 		if (paddleCollisionRight(starterBall.xPos, starterBall.yPos, starterBall.radius, playerPaddleTwo.xPos, playerPaddleTwo.yPos, playerPaddleTwo.yWidth) == true)
 		{
@@ -92,15 +88,23 @@ int main()
 		{
 			++playerPaddleOne.pScore;
 			starterBall.xPos = SCREEN_WIDTH / 2;
-			std::cout << playerPaddleOne.pScore << std::endl;
-			std::cout << playerPaddleTwo.pScore << std::endl;
+			std::cout << "Player One Score: " << playerPaddleOne.pScore << std::endl;
+			std::cout << "Player Two Score: " << playerPaddleTwo.pScore << std::endl;
+			if (playerPaddleOne.pScore == 3)
+			{
+				break;
+			}
 		}
 		if (starterBall.xPos >= 795)
 		{
 			++playerPaddleTwo.pScore;
 			starterBall.xPos = SCREEN_WIDTH / 2;
-			std::cout << playerPaddleOne.pScore << std::endl;
-			std::cout << playerPaddleTwo.pScore << std::endl;
+			std::cout << "Player One Score: " << playerPaddleOne.pScore << std::endl;
+			std::cout << "Player Two Score: " << playerPaddleTwo.pScore << std::endl;
+			if (playerPaddleTwo.pScore == 3)
+			{
+				break;
+			}
 		}
 	}
 	//Shuts down OpenGL window
