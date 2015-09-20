@@ -16,6 +16,8 @@ int main()
 	Ball starterBall{ SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 10 };
 	Velocity ballVelocity{};
 
+	char playerChoice = 'o';
+
 	//Initialize Game State Loop
 	while (sfw::stepContext())
 	{
@@ -93,7 +95,7 @@ int main()
 		}
 
 		//Checks to see if the ball scores and increases the players score by 1
-		if (starterBall.xPos <= 5)
+		if (starterBall.xPos >= 795)
 		{
 			++playerPaddleOne.pScore;
 			starterBall.xPos = SCREEN_WIDTH / 2;
@@ -102,10 +104,21 @@ int main()
 			if (playerPaddleOne.pScore == 3)
 			{
 				std::cout << "Player One WINS!" << std::endl;
-				break;
+				std::cout << "Would you like to play again?\n y = Yes, n = No";
+				std::cin >> playerChoice;
+				if (playerChoice == 'y')
+				{
+					playerPaddleOne.pScore = 0;
+					playerPaddleTwo.pScore = 0;
+					continue;
+				}
+				else (playerChoice == 'n');
+				{
+					break;
+				}
 			}
 		}
-		if (starterBall.xPos >= 795)
+		if (starterBall.xPos <= 5)
 		{
 			++playerPaddleTwo.pScore;
 			starterBall.xPos = SCREEN_WIDTH / 2;
@@ -114,12 +127,20 @@ int main()
 			if (playerPaddleTwo.pScore == 3)
 			{
 				std::cout << "Player Two WINS!" << std::endl;
-				break;
+				std::cout << "Would you like to play again?\n y = Yes, n = No";
+				std::cin >> playerChoice;
+				if (playerChoice == 'y')
+				{
+					playerPaddleOne.pScore = 0;
+					playerPaddleTwo.pScore = 0;
+					continue;
+				}
+				else (playerChoice == 'n');
+				{
+					break;
+				}
 			}
 		}
 	}
-	/*std::cout << "Would you like to play again? Y / N?" << std::endl;
-	std::cin >> letHolder[] >> std::endl;*/
-	//Shuts down OpenGL window
 	sfw::termContext;
 }
