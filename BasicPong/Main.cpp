@@ -99,8 +99,10 @@ int main()
 		{
 			++playerPaddleOne.pScore;
 			starterBall.xPos = SCREEN_WIDTH / 2;
-			std::cout << "Player One Score: " << playerPaddleOne.pScore << std::endl;
-			std::cout << "Player Two Score: " << playerPaddleTwo.pScore << std::endl;
+			//std::cout << "Player One Score: " << playerPaddleOne.pScore << std::endl;
+			//std::cout << "Player Two Score: " << playerPaddleTwo.pScore << std::endl;
+
+			//Ends game if player one has 3 points and gives choice of playing again or quitting
 			if (playerPaddleOne.pScore == 3)
 			{
 				std::cout << "Player One WINS!" << std::endl;
@@ -122,8 +124,10 @@ int main()
 		{
 			++playerPaddleTwo.pScore;
 			starterBall.xPos = SCREEN_WIDTH / 2;
-			std::cout << "Player One Score: " << playerPaddleOne.pScore << std::endl;
-			std::cout << "Player Two Score: " << playerPaddleTwo.pScore << std::endl;
+			//std::cout << "Player One Score: " << playerPaddleOne.pScore << std::endl;
+			//std::cout << "Player Two Score: " << playerPaddleTwo.pScore << std::endl;
+
+			//Ends game if player one has 3 points and gives choice of playing again or quitting
 			if (playerPaddleTwo.pScore == 3)
 			{
 				std::cout << "Player Two WINS!" << std::endl;
