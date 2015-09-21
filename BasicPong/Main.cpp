@@ -106,18 +106,8 @@ int main()
 			if (playerPaddleOne.pScore == 3)
 			{
 				std::cout << "Player One WINS!" << std::endl;
-				std::cout << "Would you like to play again?\n y = Yes, n = No";
-				std::cin >> playerChoice;
-				if (playerChoice == 'y')
-				{
-					playerPaddleOne.pScore = 0;
-					playerPaddleTwo.pScore = 0;
-					continue;
-				}
-				else (playerChoice == 'n');
-				{
-					break;
-				}
+				system("pause");
+				break;
 			}
 		}
 		if (starterBall.xPos <= 5)
@@ -131,18 +121,8 @@ int main()
 			if (playerPaddleTwo.pScore == 3)
 			{
 				std::cout << "Player Two WINS!" << std::endl;
-				std::cout << "Would you like to play again?\n y = Yes, n = No";
-				std::cin >> playerChoice;
-				if (playerChoice == 'y')
-				{
-					playerPaddleOne.pScore = 0;
-					playerPaddleTwo.pScore = 0;
-					continue;
-				}
-				else (playerChoice == 'n');
-				{
-					break;
-				}
+				system("pause");
+				break;
 			}
 		}
 	}
