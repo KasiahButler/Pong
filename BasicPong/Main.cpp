@@ -7,16 +7,18 @@
 
 int main()
 {
-	//Create the window (set to the const width/height of 800x600) and give the window a name
-	sfw::initContext(SCREEN_WIDTH, SCREEN_HEIGHT, "Corgii Pong");
-
 	//Create the variables for Game Borders, Player and AI Paddle, as well as the Ball
 	Player playerPaddleOne{30, 300, 100, 0};
 	Player playerPaddleTwo{ 770, 300, 100, 0 };
 	Ball starterBall{ SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 10 };
 	Velocity ballVelocity{};
-
 	char playerChoice = 'o';
+
+	std::cout << "Welcome to my basic Pong game!" << std::endl;
+	system("pause");
+
+	//Create the window (set to the const width/height of 800x600) and give the window a name
+	sfw::initContext(SCREEN_WIDTH, SCREEN_HEIGHT, "Corgii Pong");
 
 	//Initialize Game State Loop
 	while (sfw::stepContext())
@@ -47,7 +49,7 @@ int main()
 
 		if (sfw::getKey('i')) playerPaddleTwo.yPos -= 300 * sfw::getDeltaTime();
 		if (sfw::getKey('k')) playerPaddleTwo.yPos += 300 * sfw::getDeltaTime();
-		
+
 		//Draw the Ball
 		sfw::drawCircle(starterBall.xPos, starterBall.yPos, starterBall.radius);
 		starterBall.xPos -= ballVelocity.xPos * sfw::getDeltaTime();
